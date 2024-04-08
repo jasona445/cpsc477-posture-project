@@ -4,6 +4,7 @@ var host = "cpsc484-02.stdusr.yale.internal:8888"
 
 $(document).ready(function () {
     frames.start();
+    // twod.start();
 });
 
 var frames = {
@@ -17,5 +18,19 @@ var frames = {
     },
     show: function (frame) {
         console.log(frame);
+    }
+};
+
+var twod = {
+    socket: null,
+    start: function () {
+        var url = "ws://" + host + "/twod";
+        twod.socket = new WebSocket(url);
+        twod.socket.onmessage = function (event) {
+            twod.show(JSON.parse(event.data));
+        };
+    },
+    show: function (twod) {
+        $('img.twod').attr("src", 'data:image/pnjpegg;base64,' + twod.src);
     }
 };
