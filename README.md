@@ -1,1 +1,1 @@
-# cpsc477-posture-project
+# cpsc484-posture-project
