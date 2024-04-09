@@ -1,0 +1,14 @@
+.kinect-window{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Turn off scrollbars */
+body{
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+}
