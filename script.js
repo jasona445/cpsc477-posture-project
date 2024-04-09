@@ -17,6 +17,7 @@ var frames = {
         };
     },
     get_posture_heuristic: function (frame) {
+        // Returns an array of posture heuristics for all people in the frame
         let heuristics = frame.people.map((person) => {
             let spine_naval = person.joints[1].position.x;
             let neck = person.joints[3].position.x;
