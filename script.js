@@ -13,11 +13,18 @@ var frames = {
         var url = "ws://" + host + "/frames";
         frames.socket = new WebSocket(url);
         frames.socket.onmessage = function (event) {
-            frames.show(JSON.parse(event.data));
+            frames.get_posture_heuristic(JSON.parse(event.data));
         };
     },
-    show: function (frame) {
-        console.log(frame);
+    get_posture_heuristic: function (frame) {
+        let heuristics = frame.people.map((person) => {
+            let spine_naval = person.joints[1].position.x;
+            let neck = person.joints[3].position.x;
+            return Math.abs(spine_naval - neck);
+        });
+        console.log(frame)
+        console.log(heuristics)
+        return heuristics;
     }
 };
 
