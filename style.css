@@ -31,3 +31,11 @@ body{text-align: center;background: #f2f6f8;}
     position:relative;
     z-index:20;
 }
+
+.hidden {
+    display: none;
+}
+
+.visible {
+    display: block;
+}

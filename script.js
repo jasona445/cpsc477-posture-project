@@ -5,10 +5,11 @@ var host = "cpsc484-02.stdusr.yale.internal:8888"
 $(document).ready(function () {
     frames.start();
     twod.start();
+    updateContentForState(frames.state);
 });
 
 var frames = {
-    state: null,
+    state: "home_screen",
     socket: null,
     start: function () {
         var url = "ws://" + host + "/frames";
@@ -16,7 +17,10 @@ var frames = {
         frames.socket.onmessage = function (event) {
             frames.get_posture_heuristic(JSON.parse(event.data));
             frames.drawPersonRectangle(JSON.parse(event.data));
-            // frames.router(frame); 
+            if (frames.state === "home_screen") {
+                frames.checkForRightHandRaise(JSON.parse(event.data));
+
+            }
         };
     },
 
@@ -30,7 +34,7 @@ var frames = {
         frameData.people.forEach(person => {
             // Draw a rectangle around each detected person
             ctx.beginPath();
-            console.log([person.joints[18].position.x, person.joints[5].position.y, 100, 100]);
+            // console.log([person.joints[18].position.x, person.joints[5].position.y, 100, 100]);
 
             ctx.rect(person.joints[18].position.x - 270, person.joints[5].position.y, 100, 100);
             ctx.lineWidth = 10;
@@ -51,8 +55,8 @@ var frames = {
             let neck = person.joints[3].position.x;
             return Math.abs(spine_naval - neck);
         });
-        console.log(frame)
-        console.log(heuristics)
+        // console.log(frame);
+        // console.log(heuristics);
         return heuristics;
     },
 
@@ -86,13 +90,16 @@ var frames = {
         }
     },
 
-    load_page: function (page_name) {
-        $("#content-placeholder").load(page_name);
-    },
+    // load_page: function (page_name) {
+    //     $("#content-placeholder").load(page_name);
+    // },
 
     home_screen: function (frame) {
-        if (this.get_hand(frame).hand == "right") {
+        console.log("Home Screen Here");
+        if (this.checkForRightHandRaise) {
             this.state = "posture_detection";
+            // this.router(frame);
+            updateContentForState(this.state);
             this.router(frame);
         }
     },
@@ -100,14 +107,21 @@ var frames = {
     posture_detection: function (frame) {
         // use get_posture_heuristics to determine if good posture or not
         var postureGood = this.analyzePosture(frame); // Placeholder function
-
-        if (postureGood) {
-            this.load_page("posture_good.html"); // Load a page indicating good posture
-            // Now, start checking for the right hand raise gesture to proceed
-            this.checkForRightHandRaise();
-        } else {
-            this.load_page("adjust_posture.html"); // Load a page asking the user to adjust their posture
-        }
+        setTimeout(() => {
+            if (postureGood) {
+                // this.load_page("posture_good.html"); // Load a page indicating good posture
+                frames.state = "stretches";
+                updateContentForState(frames.state);
+                this.router(frame);
+                // Now, start checking for the right hand raise gesture to proceed
+                this.checkForRightHandRaise();
+            } else {
+                // this.load_page("adjust_posture.html"); // Load a page asking the user to adjust their posture
+                frames.state = "adjust_posture";
+                updateContentForState(frames.state);
+                this.router(frame);
+            }
+        }, 3000);
     },
 
     analyzePosture: function (frame) {
@@ -117,19 +131,43 @@ var frames = {
     },
 
     stretches: function (frame) {
-        this.load_page("stretches.html");
+        // this.load_page("stretches.html");
+        frames.state = "stretches";
+        updateContentForState(frames.state);
+        this.router(frame);
     },
 
+    // checkForRightHandRaise: function (frame) {
+    //     var checkInterval = setInterval(() => {
+    //         var handResult = this.get_hand(frame);
+    //         console.log("hi");
+    //         console.log(handResult.hand);
+    //         if (handResult.hand == "right") {
+    //             clearInterval(checkInterval); // Stop the interval check
+    //             // this.load_page("stretches.html"); // Proceed to the stretches page
+    //             frames.state = "stretches";
+    //             updateContentForState(frames.state);
+    //         }
+    //     }, 100); 
+    // },
     checkForRightHandRaise: function (frame) {
-        var checkInterval = setInterval(() => {
-            var handResult = this.get_hand(frame);
+        var handResult = this.get_hand(frame);
 
-            if (handResult.hand == "right") {
-                clearInterval(checkInterval); // Stop the interval check
-                this.load_page("stretches.html"); // Proceed to the stretches page
+        if (handResult.hand == "right") {
+            // Transition to the next state based on the current state
+            if (this.state === "home_screen") {
+                this.state = "posture_detection";
+                updateContentForState(this.state);
+                this.router(frame);
+            } else if (this.state === "adjust_posture") {
+                this.state = "stretches";
+                updateContentForState(this.state);
+                this.router(frame);
             }
-        }, 100); 
+            // updateContentForState(this.state);
+        }
     },
+
 
 };
 
@@ -147,3 +185,28 @@ var twod = {
     }
 };
 
+function updateContentForState(state) {
+    // First, hide all content sections
+    console.log("New State: ", { state });
+    $(".state-content").addClass("hidden").removeClass("visible");
+
+    // Then, show the content section for the current state
+    switch (state) {
+        case "home_screen":
+            $("#home-screen").addClass("visible").removeClass("hidden");
+            break;
+        case "posture_detection":
+            $("#posture-detection").addClass("visible").removeClass("hidden");
+            break;
+        case "bad_posture":
+            $("#bad-posture").addClass("visible").removeClass("hidden");
+            break;
+        case "stretches":
+            $("#stretches").addClass("visible").removeClass("hidden");
+            break;
+        case "adjust_posture":
+            $("#adjust-posture").addClass("visible").removeClass("hidden");
+            break;
+        // Add more cases as needed
+    }
+};
