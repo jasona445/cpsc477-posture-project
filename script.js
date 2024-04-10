@@ -187,7 +187,7 @@ var twod = {
 
 function updateContentForState(state) {
     // First, hide all content sections
-    console.log("New State: ", { state });
+    // console.log("New State: ", { state });
     $(".state-content").addClass("hidden").removeClass("visible");
 
     // Then, show the content section for the current state
