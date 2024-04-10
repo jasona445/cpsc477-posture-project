@@ -12,3 +12,22 @@ body{
     margin: 0;
     overflow: hidden;
 }
+
+body{text-align: center;background: #f2f6f8;}
+.twod{position:absolute;z-index:1;}
+
+#container{
+    display:inline-block;
+    width:540px; 
+    height:480px;
+    margin: 0 auto; 
+    background: black; 
+    position:relative; 
+    border:5px solid black; 
+    border-radius: 10px; 
+    box-shadow: 0 5px 50px #333}
+
+#kinect-canvas{
+    position:relative;
+    z-index:20;
+}

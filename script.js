@@ -1,7 +1,7 @@
 // run python3 -m http.server 4444
 // then go to inspect element and console
 var host = "cpsc484-02.stdusr.yale.internal:8888"
-
+// var host = "localhost:4444"
 $(document).ready(function () {
     frames.start();
     twod.start();
@@ -15,10 +15,35 @@ var frames = {
         frames.socket = new WebSocket(url);
         frames.socket.onmessage = function (event) {
             frames.get_posture_heuristic(JSON.parse(event.data));
+            frames.drawPersonRectangle(JSON.parse(event.data));
             // frames.router(frame); 
         };
     },
 
+    drawPersonRectangle: function (frameData) {
+        // Access frame data and perform person detection
+        var canvas = document.getElementById('kinect-canvas');
+        var ctx = canvas.getContext('2d');
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        // For example, assume frameData contains an array of people with their bounding box coordinates (x, y, width, height)
+        frameData.people.forEach(person => {
+            // Draw a rectangle around each detected person
+            ctx.beginPath();
+            console.log([person.joints[18].position.x, person.joints[5].position.y, 100, 100]);
+
+            ctx.rect(person.joints[18].position.x - 270, person.joints[5].position.y, 100, 100);
+            ctx.lineWidth = 10;
+            ctx.strokeStyle = 'red';
+            ctx.stroke();
+        });
+    },
+
+        // shoulder left 5
+        // right 12
+        // hip left 18
+        // hip right 22
+        
     get_posture_heuristic: function (frame) {
         // Returns an array of posture heuristics for all people in the frame
         let heuristics = frame.people.map((person) => {
@@ -121,3 +146,4 @@ var twod = {
         $('img.twod').attr("src", 'data:image/pnjpegg;base64,' + twod.src);
     }
 };
+

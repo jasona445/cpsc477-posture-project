@@ -1,18 +1,27 @@
 <!DOCTYPE html>
-<html lang = "en">
+<html lang="en">
 <head>
-    <meta charset = "UTF-8">
-    <meta name = "viewport" content = "width = device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Posture Detection</title>
-    <script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <script src = "script.js"></script>
-    <link rel="stylesheet" href ="style.css" />
-    <div class="kinect-window">
-        <img class="twod" />
+    Please raise your hand to proceed to the stretching excercises!
+    <div id="container">
+        <img class='twod' alt="" height="300"/>
+        <canvas id="kinect-canvas" width="540" height="480" style="border:1px solid #000000;"></canvas>
     </div>
-    <div id = "content-placeholder"></div>
+
+
+    <!-- <div class="kinect-window">
+        <img class='twod' alt="" height="300" />
+        <canvas id="kinect-canvas" width="320" height="300"></canvas>
+        
+    </div> -->
+    <div id="content-placeholder"></div>
+    
 </body>
 </html>
