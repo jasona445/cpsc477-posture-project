@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Posture Detection</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .status {
+            font-size: 24px;
+            margin: 20px;
+        }
+
+        .instructions {
+            font-size: 20px;
+            color: #333;
+        }
+
+        /* Style adjustments based on posture */
+        .good-posture {
+            color: green;
+        }
+
+        .adjust-posture {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="status" class="status adjust-posture">Analyzing Posture...</div>
+    <div class="instructions">Please stand in front of the sensor. Raise your right hand to proceed.</div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="script.js"></script>
+    <script>
+
+        $(document).ready(function () {
+            function updateStatus(postureGood) {
+                if (postureGood) {
+                    $("#status").text("Good Posture!").addClass("good-posture").removeClass("adjust-posture");
+                } else {
+                    $("#status").text("Please Adjust Your Posture").addClass("adjust-posture").removeClass("good-posture");
+                }
+            }
+
+            function onRightHandRaised() {
+                window.location.href = "stretches.html"; // Redirect to the stretches page
+            }
+        });
+    </script>
+</body>
+
+</html>
