@@ -9,47 +9,49 @@
     <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <!-- Please raise your hand to proceed to the stretching excercises! -->
-    <div id="container">
-        <img class='twod' alt="" height="300"/>
-        <canvas id="kinect-canvas" width="540" height="480" style="border:1px solid #000000;"></canvas>
-    </div>
-
-
     <!-- <div class="kinect-window">
         <img class='twod' alt="" height="300" />
         <canvas id="kinect-canvas" width="320" height="300"></canvas>
         
     </div> -->
-    <div id="content-placeholder"></div>
 
+    <!-- Home Screen Content -->
+    <div id="home-screen" class="state-content">
+        <h1>ENTER PROJECT TITLE HERE</h1>
+        <p>Welcome! Raise your right hand to start.</p>
+    </div>
 
-<!-- Home Screen Content -->
-<div id="home-screen" class="state-content">
-    <p>Welcome! Raise your right hand to start.</p>
-</div>
+    <!-- Posture Detection Content -->
+    <div id="posture-detection" class="state-content">
+        <h1>Your posture is being analyzed...</h1>
+        <p>A green box means good posture.</p>
+        <p>A red box means bad posture.</p>
+        <div id="container">
+            <img class='twod' alt="" height="300" />
+            <canvas id="kinect-canvas" width="540" height="480" style="border:1px solid #000000;"></canvas>
+        </div>
+        <p>Raise your left hand to go back to the home screen.</p>
+        <p>Raise your right hand to go to skip ahead to the stretches.</p>
+    </div>
 
-<!-- Posture Detection Content -->
-<div id="posture-detection" class="state-content">
-    <p>Your posture is being analyzed...</p>
-</div>
+    <!-- Adjust posture Content -->
+    <div id="adjust-posture" class="state-content">
+        <h1>Here are some tips for adjusting your posture!</h1>
 
-<!-- Bad Posture Content -->
-<div id="bad-posture" class="state-content" >
-    <p>You have bad posture!</p>
-</div>
+        <p>Straighten your back!</p>
+        <p>Raise your right hand to be re-analyzed.</p>
+    </div>
 
-<!-- Stretches Content -->
-<div id="stretches" class="state-content" >
-    <p>Here are some stretches.</p>
-    <img src="https://cdn-prod.medicalnewstoday.com/content/images/articles/325/325365/hip-flexor-stretch-or-exercise-gif.gif" alt="Random Stretch">
-    
-</div>
-    
-<!-- Adjust posture Content -->
-<div id="adjust-posture" class="state-content" >
-    <p>Adjust your posture! Straighten your back.</p>
-</div>
+    <!-- Stretches Content -->
+    <div id="stretches" class="state-content" >
+        <p>Here are some stretches.</p>
+
+        <img src="https://cdn-prod.medicalnewstoday.com/content/images/articles/325/325365/hip-flexor-stretch-or-exercise-gif.gif" alt="Random Stretch">
+        
+        <p>Raise your right hand to go finish.</p>
+        <p>Raise your left hand to be re-analyzed.</p>
+    </div>
+        
 
 </body>
 

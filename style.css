@@ -17,8 +17,9 @@ body{text-align: center;background: #f2f6f8;}
 .twod{position:absolute;z-index:1;}
 
 #container{
-    display:inline-block;
-    width:540px; 
+    /* display:inline-block; */
+    display: none;
+    width: 540px; 
     height:480px;
     margin: 0 auto; 
     background: black; 
@@ -39,3 +40,4 @@ body{text-align: center;background: #f2f6f8;}
 .visible {
     display: block;
 }
+
