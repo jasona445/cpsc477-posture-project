@@ -44,10 +44,22 @@ var frames = {
         latestFrameData.people.forEach(person => {
             // Draw a rectangle around each detected person
             ctx.beginPath();
-            // console.log([person.joints[18].position.x, person.joints[5].position.y, 100, 100]);
-            ctx.rect(person.joints[18].position.x - 270, person.joints[5].position.y, 100, 100);
-            ctx.lineWidth = 10;
-            ctx.strokeStyle = 'red';
+            xval = 640 * ((person.x_pos + 1.5)/3);
+            yval = ((person.joints[0].position.y)/4);
+            console.log([xval, yval]);
+
+            // xval = -640 * ((person.joints[5].position.x)/1500) + 320
+            // yval = 360 * ((person.joints[5].position.y)/500)
+            // console.log([xval, yval, 100, 100]);
+
+            ctx.rect(xval - 50 , yval, 100, 300);
+            ctx.lineWidth = 2;
+            if (person.body_id == 2){
+                ctx.strokeStyle = 'green';
+            }
+            else {
+                ctx.strokeStyle = 'red';
+            }
             ctx.stroke();
         });
     },
