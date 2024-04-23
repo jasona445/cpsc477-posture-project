@@ -54,10 +54,12 @@ var frames = {
 
             ctx.rect(xval - 50 , yval, 100, 300);
             ctx.lineWidth = 2;
-            if (person.body_id == 2){
+            if (this.analyze_posture(person.body_id)){
                 ctx.strokeStyle = 'green';
+                console.log("posture good")
             }
             else {
+                console.log("posture bad")
                 ctx.strokeStyle = 'red';
             }
             ctx.stroke();
