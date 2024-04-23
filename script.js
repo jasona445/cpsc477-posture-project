@@ -71,6 +71,7 @@ var frames = {
             let neck = person.joints[3].position.x;
             return Math.abs(spine_naval - neck);
         });
+        console.log(heuristics);
         return heuristics;
     },
 
@@ -94,10 +95,13 @@ var frames = {
         this.checkForHandRaise();
     },
 
-    analyze_posture: function () {
+    analyze_posture: function (person_id) {
         // Implement posture analysis logic here, using get_posture_heuristic
         // For now, this is a placeholder that always returns true
-        return true;
+        let cutoff = 0.3
+
+        heuristics = this.get_posture_heuristic()
+        return heuristics.map(heuristic => heuristic > cutoff)[person_id];
     },
 
     stretches: function () {
