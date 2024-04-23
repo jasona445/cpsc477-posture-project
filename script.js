@@ -56,10 +56,8 @@ var frames = {
             ctx.lineWidth = 2;
             if (this.analyze_posture(person.body_id)){
                 ctx.strokeStyle = 'green';
-                console.log("posture good")
             }
             else {
-                console.log("posture bad")
                 ctx.strokeStyle = 'red';
             }
             ctx.stroke();
@@ -98,8 +96,7 @@ var frames = {
     },
 
     analyze_posture: function (person_id) {
-        // Implement posture analysis logic here, using get_posture_heuristic
-        // For now, this is a placeholder that always returns true
+        // Returns true if the posture of the person is good w.r.t the cutoff, else false
         let cutoff = 0.3
 
         heuristics = this.get_posture_heuristic()
