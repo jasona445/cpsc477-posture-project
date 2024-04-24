@@ -26,7 +26,7 @@ var frames = {
         // };
         frames.socket.onmessage = function (event) {
             latestFrameData = JSON.parse(event.data); 
-            frames.get_posture_heuristic(latestFrameData);
+            
             frames.drawPersonRectangle(latestFrameData);
             if (frames.state === "home_screen") {
                 frames.checkForHandRaise(); 
@@ -54,7 +54,7 @@ var frames = {
 
             ctx.rect(xval - 50 , yval, 100, 300);
             ctx.lineWidth = 2;
-            if (this.analyze_posture(person.body_id)){
+            if (this.analyze_posture(person)){
                 ctx.strokeStyle = 'green';
             }
             else {
@@ -64,15 +64,13 @@ var frames = {
         });
     },
     
-    get_posture_heuristic: function () {
+    get_posture_heuristic: function (person) {
         // Returns an array of posture heuristics for all people in the frame
-        let heuristics = latestFrameData.people.map((person) => {
-            let spine_naval = person.joints[1].position.x;
-            let neck = person.joints[3].position.x;
-            return Math.abs(spine_naval - neck);
-        });
-        console.log(heuristics);
-        return heuristics;
+    
+        let spine_naval = person.joints[1].position.x;
+        let neck = person.joints[3].position.x;
+        return Math.abs(spine_naval - neck);
+
     },
 
     home_screen: function () {
@@ -97,12 +95,11 @@ var frames = {
         this.checkForHandRaise();
     },
 
-    analyze_posture: function (person_id) {
+    analyze_posture: function (person) {
         // Returns true if the posture of the person is good w.r.t the cutoff, else false
-        let cutoff = 0.3
+        let cutoff = 20
 
-        heuristics = this.get_posture_heuristic()
-        return heuristics.map(heuristic => heuristic > cutoff)[person_id];
+        return this.get_posture_heuristic(person) > cutoff;
     },
 
     stretches: function () {
