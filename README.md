@@ -12,6 +12,13 @@ Poor posture can lead to various health issues such as back pain, fatigue, and m
 3. You're ready to use the Postural Analysis System!
    (Note: There are no additional dependencies that need to be installed apart from our code.)
 
+## Tasks Addressed by the Installation:
+The tasks this system aims to address are the following:
+i) periodically correct posture to practice maintaining good posture
+ii) learn what behaviors contribute to poor posture
+The first task is addressed by a combination of two of the main features of the system. By the TV displaying red boxes around passer-bys with bad posture, it is giving potential users a visual reminder to correct their posture. Our system then allows potential users to execute this under some guidance by providing stretching exercises that the users can then perform.
+The second task is addressed by allowing users the choice to access a QR code (by lifting their left arm) that they can then scan using their phone and access information regarding posture, what behaviors contribute to poor posture, and how to improve their posture.
+
 ## Deployment Environment Constraints:
 * **Physical Location:** The system is designed for deployment on a TV in a well-trafficked hallway. If deployed in a dissimilar environment, particularly without people within view, the program will not run accordingly.
 * **Sensing Capabilities:** The system relies on specific sensing capabilities such as Kinect skeleton tracking and group detection. Verify that these capabilities are functional in the deployment environment and adjust sensor placement if necessary to optimize data collection.
@@ -32,4 +39,17 @@ Contribution: Overlaying canvas on image for rectangle display, creating the rec
 **Student Name and NetID: Jason Zheng jz775**
 Contribution: Initial WebSocket connection code, twod socket code, dynamic html code/state code, utilized data regarding joints from Kinect sensor to interpret user action as commands, met for testing on the TV
 
+
+**Collaboration Record:** 
+Student Name and NetID: Jason Apostol JGA32
+Contribution: Depth display, CSS, posture heuristic - using data from Kinect sensor, completed posture analysis to determine if the posture is good or poor, met for testing on the TV
+
+Student Name and NetID: Mahal Montes emm254
+Contribution: CSS and aesthetic HTML changes for stretching activity, starting screen, and postural analysis, additional gifs + sources, wrote up readme after group discussion, met for testing on the TV
+
+Student Name and NetID: Shriya Anand sa2435
+Contribution: Overlaying canvas on image for rectangle display, creating the rectangle over the users and color coding them based off their posture, edits on writeup, created information pamphlet on posture and made it available on site via QR code, met for testing on the TV
+
+Student Name and NetID: Jason Zheng jz775
+Contribution: Initial WebSocket connection code, twod socket code, dynamic html code/state code, utilized data regarding joints from Kinect sensor to interpret user action as commands, met for testing on the TV
 
