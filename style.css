@@ -11,9 +11,27 @@ body{
     height: 100%;
     margin: 0;
     overflow: hidden;
+    text-align: center;
+    background-color: #f0f0f0;
+    color: #333; 
+    font-family: Arial, sans-serif; 
 }
 
-body{text-align: center;background: #f2f6f8;}
+.state-content {
+text-align: center;
+margin-top: 50px; 
+}
+
+h1 {
+font-size: 36px; /* Large font size */
+margin-bottom: 20px; /* Add space below heading */
+}
+
+p {
+font-size: 18px; /* Medium font size */
+margin-bottom: 10px; /* Add space below paragraphs */
+}
+
 .twod{position:absolute;z-index:1;}
 
 #container{
