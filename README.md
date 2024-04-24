@@ -7,7 +7,7 @@ The Postural Analysis System is a final project developed for the CPSC 484 cours
 Poor posture can lead to various health issues such as back pain, fatigue, and musculoskeletal disorders. The project addresses the need for an automated system that can assist in evaluating and improving posture, especially in environments where prolonged sitting or standing is common.
 
 ## Installation Instructions:
-1. Clone the project repository from the GitHub link.
+1. Clone the project repository from the GitHub [link](https://github.com/Yale-CPSC484-HCI/recorder).
 2. Ensure you have an Integrated Development Environment (IDE) installed on your system to run and edit web code.
 3. There is a small amount of sample data in data/sample with which you can run the program. In order to play it back run the following code:
 `pipenv run python src/main.py --data-path data/sample --mode play`
