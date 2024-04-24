@@ -63,18 +63,16 @@ var frames = {
             ctx.stroke();
         });
     },
-    
-    get_posture_heuristic: function (person) {
-        // Returns an array of posture heuristics for all people in the frame
-    
-        let spine_naval = person.joints[1].position.x;
-        let neck = person.joints[3].position.x;
-        return Math.abs(spine_naval - neck);
-
-    },
 
     home_screen: function () {
         this.checkForHandRaise();
+    },
+
+    analyze_posture: function (person) {
+        // Returns true if the posture of the person is good w.r.t the cutoff, else false
+        let cutoff = 15
+
+        return this.get_posture_heuristic(person) < cutoff;
     },
 
     posture_detection: function () {
@@ -95,12 +93,17 @@ var frames = {
         this.checkForHandRaise();
     },
 
-    analyze_posture: function (person) {
-        // Returns true if the posture of the person is good w.r.t the cutoff, else false
-        let cutoff = 20
+    get_posture_heuristic: function (person) {
+        // Returns an array of posture heuristics for all people in the frame
+    
+        let spine_chest = person.joints[2].position.x;
+        let head = person.joints[26].position.x;
+        console.log(head - spine_chest)
+        return head - spine_chest;
 
-        return this.get_posture_heuristic(person) > cutoff;
     },
+
+
 
     stretches: function () {
         this.checkForHandRaise();
