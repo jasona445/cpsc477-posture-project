@@ -9,13 +9,17 @@ Poor posture can lead to various health issues such as back pain, fatigue, and m
 ## Installation Instructions:
 1. Clone the project repository from the GitHub link.
 2. Ensure you have an Integrated Development Environment (IDE) installed on your system to run and edit web code.
-3. You're ready to use the Postural Analysis System!
-   (Note: There are no additional dependencies that need to be installed apart from our code.)
+3. There is a small amount of sample data in data/sample with which you can run the program. In order to play it back run the following code:
+`pipenv run python src/main.py --data-path data/sample --mode play`
+4. You're ready to use the Postural Analysis System!
+   (Note: The recorded sample data is an optional dependency that can be installed if not connecting to TV-2 in Becton Center.)
+
 
 ## Tasks Addressed by the Installation:
 The tasks this system aims to address are the following:
 1. Periodically correct posture to practice maintaining good posture
 2. Learn what behaviors contribute to poor posture
+   
 The first task is addressed by a combination of two of the main features of the system. By the TV displaying red boxes around passer-bys with bad posture, it is giving potential users a visual reminder to correct their posture. Our system then allows potential users to execute this under some guidance by providing stretching exercises that the users can then perform.
 The second task is addressed by allowing users the choice to access a QR code (by lifting their left arm) that they can then scan using their phone and access information regarding posture, what behaviors contribute to poor posture, and how to improve their posture.
 
