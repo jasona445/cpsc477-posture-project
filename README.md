@@ -38,18 +38,3 @@ Contribution: Overlaying canvas on image for rectangle display, creating the rec
 
 **Student Name and NetID: Jason Zheng jz775**
 Contribution: Initial WebSocket connection code, twod socket code, dynamic html code/state code, utilized data regarding joints from Kinect sensor to interpret user action as commands, met for testing on the TV
-
-
-**Collaboration Record:** 
-Student Name and NetID: Jason Apostol JGA32
-Contribution: Depth display, CSS, posture heuristic - using data from Kinect sensor, completed posture analysis to determine if the posture is good or poor, met for testing on the TV
-
-Student Name and NetID: Mahal Montes emm254
-Contribution: CSS and aesthetic HTML changes for stretching activity, starting screen, and postural analysis, additional gifs + sources, wrote up readme after group discussion, met for testing on the TV
-
-Student Name and NetID: Shriya Anand sa2435
-Contribution: Overlaying canvas on image for rectangle display, creating the rectangle over the users and color coding them based off their posture, edits on writeup, created information pamphlet on posture and made it available on site via QR code, met for testing on the TV
-
-Student Name and NetID: Jason Zheng jz775
-Contribution: Initial WebSocket connection code, twod socket code, dynamic html code/state code, utilized data regarding joints from Kinect sensor to interpret user action as commands, met for testing on the TV
-
