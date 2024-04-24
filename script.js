@@ -46,7 +46,7 @@ var frames = {
             ctx.beginPath();
             xval = 640 * ((person.x_pos + 1.5)/3);
             yval = ((person.joints[0].position.y)/4);
-            console.log([xval, yval]);
+            //console.log([xval, yval]);
 
             // xval = -640 * ((person.joints[5].position.x)/1500) + 320
             // yval = 360 * ((person.joints[5].position.y)/500)
@@ -81,14 +81,14 @@ var frames = {
         // use get_posture_heuristics to determine if good posture or not
         var countdownElement = document.getElementById('countdown');
         startCountdown(10, countdownElement);
-        var postureGood = this.analyze_posture(); // Placeholder function
-        setTimeout(() => {
-            if (this.analyze_posture()) {
-                this.checkForHandRaise();
-            } else {
-                this.transitionState("adjust_posture");
-            }
-        }, 11000);
+        // var postureGood = this.analyze_posture(); // Placeholder function
+        // setTimeout(() => {
+        //     if (this.analyze_posture()) {
+        //         this.checkForHandRaise();
+        //     } else {
+        //         this.transitionState("adjust_posture");
+        //     }
+        // }, 11000);
     },
 
     adjust_posture: function () {
@@ -188,7 +188,10 @@ var frames = {
             setTimeout(() => {
                 this.cooldown = false;
                 this.checkForHandRaise(latestFrameData);
+                
             }, 2500); // Cooldown period of 2.5 seconds
+
+            
         }
     },
 };
