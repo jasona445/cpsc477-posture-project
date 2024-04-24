@@ -81,14 +81,16 @@ var frames = {
 
     posture_detection: function () {
         // use get_posture_heuristics to determine if good posture or not
+        var countdownElement = document.getElementById('countdown');
+        startCountdown(10, countdownElement);
         var postureGood = this.analyze_posture(); // Placeholder function
         setTimeout(() => {
-            if (postureGood) {
+            if (this.analyze_posture()) {
                 this.checkForHandRaise();
             } else {
                 this.transitionState("adjust_posture");
             }
-        }, 3000);
+        }, 11000);
     },
 
     adjust_posture: function () {
@@ -150,6 +152,7 @@ var frames = {
                 break;
             case "adjust_posture":
                 if (hand === "right") this.transitionState("posture_detection");
+                else if (hand === "left") this.transitionState("stretches");
                 break;
             case "stretches":
                 if (hand === "right") this.transitionState("home_screen");
@@ -228,3 +231,14 @@ function updateContentForState(state) {
             break;
     }
 };
+
+function startCountdown(duration, display) {
+    var timer = duration;
+    var countdownTimer = setInterval(function () {
+        display.textContent = timer;
+        if (--timer < 0) {
+            clearInterval(countdownTimer);
+            display.textContent = "Time's up!";
+        }
+    }, 1000);
+}

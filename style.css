@@ -44,7 +44,9 @@ margin-bottom: 10px; /* Add space below paragraphs */
     position:relative; 
     border:5px solid black; 
     border-radius: 10px; 
-    box-shadow: 0 5px 50px #333}
+    box-shadow: 0 5px 50px #333;
+    flex: none;
+}
 
 #kinect-canvas{
     position:relative;
@@ -60,3 +62,40 @@ margin-bottom: 10px; /* Add space below paragraphs */
 }
 
 
+#home-screen {
+    text-align: center;
+    padding-top: 20vh;
+}
+
+
+.flex-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.hand-instruction {
+    flex: 1;
+    text-align: center;
+    margin: 0 10px;
+}
+
+.hand-instruction.left {
+    text-align: right;
+}
+
+.hand-instruction.right {
+    text-align: left;
+}
+
+.success{
+    color: green;
+}
+
+.failure {
+    color: red;
+}
+
+#stretches h5 {
+    font-size: 12px;
+}
