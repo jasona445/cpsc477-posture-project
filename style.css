@@ -99,3 +99,26 @@ margin-bottom: 10px; /* Add space below paragraphs */
 #stretches h5 {
     font-size: 12px;
 }
+
+/* Stretching activity slide */
+.image-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.image-with-text {
+    text-align: center;
+    width: calc(33.33% - 10px);
+}
+
+.image-with-text img {
+    max-width: 100%;
+    height: auto;
+}
+
+.image-with-text h5 {
+    margin-top: 5px;
+    font-size: 14px;
+    color: #777;
+}
