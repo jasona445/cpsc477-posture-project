@@ -79,12 +79,12 @@ var frames = {
 
     posture_detection: function () {
         // use get_posture_heuristics to determine if good posture or not
-        var countdownElement = document.getElementById('countdown');
-        startCountdown(10, countdownElement);
+        // var countdownElement = document.getElementById('countdown');
+        // startCountdown(10, countdownElement);
         // var postureGood = this.analyze_posture(); // Placeholder function
         // setTimeout(() => {
         //     if (this.analyze_posture()) {
-        //         this.checkForHandRaise();
+                this.checkForHandRaise();
         //     } else {
         //         this.transitionState("adjust_posture");
         //     }
@@ -108,19 +108,20 @@ var frames = {
     
     // grabs the current hand being raised
     get_hand: function (frame) {
-        let left_hand = frame.people[0].joints[8].position.y * -1;
-        let right_hand = frame.people[0].joints[15].position.y * -1;
-        let head = frame.people[0].joints[26].position.y * -1;
+        for (let person of frame.people) {
+            let left_hand = person.joints[8].position.y * -1;
+            let right_hand = person.joints[15].position.y * -1;
+            let head = person.joints[26].position.y * -1;
 
-        if (left_hand - head > 0) {
-            return { hand: "left" };
-        } else if (right_hand - head > 0) {
-            return { hand: "right" };
-        } else if (right_hand - head > 0 && left_hand - head > 0) {
-            return { hand: "both" };
-        } else {
-            return { hand: "none" };
+            if (left_hand - head > 0 && right_hand - head <= 0) {
+                return { hand: "left", personId: person.id };
+            } else if (right_hand - head > 0 && left_hand - head <= 0) {
+                return { hand: "right", personId: person.id };
+            } else if (right_hand - head > 0 && left_hand - head > 0) {
+                return { hand: "both", personId: person.id };
+            }
         }
+        return { hand: "none", personId: null };
     },
 
     checkForHandRaise: function () {
@@ -129,7 +130,7 @@ var frames = {
             if (!latestFrameData) return; 
             var handResult = this.get_hand(latestFrameData);
 
-            if (handResult.hand === "right" || handResult.hand === "left") {
+            if (handResult.hand === "right" || handResult.hand === "left" || handResult.hand === "both") {
                 clearInterval(intervalId); 
                 this.handleGesture(handResult.hand); 
                 this.initiateCooldown(); 
@@ -145,11 +146,13 @@ var frames = {
                 break;
             case "posture_detection":
                 if (hand === "right") this.transitionState("stretches");
-                else if (hand === "left") this.transitionState("home_screen");
+                else if (hand === "left") this.transitionState("adjust_posture");
+                else if (hand === "both") this.transitionState("home_screen");
                 break;
             case "adjust_posture":
                 if (hand === "right") this.transitionState("posture_detection");
                 else if (hand === "left") this.transitionState("stretches");
+                else if (hand === "both") this.transitionState("home_screen");
                 break;
             case "stretches":
                 if (hand === "right") this.transitionState("home_screen");
@@ -231,14 +234,3 @@ function updateContentForState(state) {
             break;
     }
 };
-
-function startCountdown(duration, display) {
-    var timer = duration;
-    var countdownTimer = setInterval(function () {
-        display.textContent = timer;
-        if (--timer < 0) {
-            clearInterval(countdownTimer);
-            display.textContent = "Time's up!";
-        }
-    }, 1000);
-}
