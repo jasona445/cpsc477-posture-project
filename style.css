@@ -30,7 +30,7 @@ margin-bottom: 30px; /* Add space below heading */
 
 p {
 font-size: 30px; /* Medium font size */
-margin-bottom: 10px; /* Add space below paragraphs */
+margin-bottom: 30px; /* Add space below paragraphs */
 }
 
 .twod{position:absolute;z-index:1;}
@@ -72,7 +72,6 @@ margin-bottom: 10px; /* Add space below paragraphs */
 .flex-container {
     display: flex;
     justify-content: space-between;
-    align-items: center;
 }
 
 .hand-instruction {
