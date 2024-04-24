@@ -14,8 +14,8 @@ Poor posture can lead to various health issues such as back pain, fatigue, and m
 
 ## Tasks Addressed by the Installation:
 The tasks this system aims to address are the following:
-i) periodically correct posture to practice maintaining good posture
-ii) learn what behaviors contribute to poor posture
+1. Periodically correct posture to practice maintaining good posture
+2. Learn what behaviors contribute to poor posture
 The first task is addressed by a combination of two of the main features of the system. By the TV displaying red boxes around passer-bys with bad posture, it is giving potential users a visual reminder to correct their posture. Our system then allows potential users to execute this under some guidance by providing stretching exercises that the users can then perform.
 The second task is addressed by allowing users the choice to access a QR code (by lifting their left arm) that they can then scan using their phone and access information regarding posture, what behaviors contribute to poor posture, and how to improve their posture.
 
