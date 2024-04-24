@@ -45,10 +45,10 @@ var frames = {
             // Draw a rectangle around each detected person
             ctx.beginPath();
             if (person.x_pos < 0){
-                xval = 640 * ((person.x_pos + 1.5)/3);
+                xval = 640 * ((person.x_pos + 1.25)/3);
             }
             else {
-                xval = 640 * ((1.5 - person.x_pos)/3);
+                xval = 640 * ((person.x_pos + 1.25)/3);
             }
             yval = ((person.joints[0].position.y)/4);
             //console.log([xval, yval]);
