@@ -8,9 +8,9 @@ Poor posture can lead to various health issues such as back pain, fatigue, and m
 
 ## Installation Instructions:
 1. Clone the project repository from the GitHub link.
-2. Ensure you have Python 3.x installed on your system.
+2. Ensure you have an Integrated Development Environment (IDE) installed on your system to run and edit web code.
 3. You're ready to use the Postural Analysis System!
-(note: there are no dependencies that need to be installed in addition to our code)
+   (Note: There are no additional dependencies that need to be installed apart from our code.)
 
 ## Deployment Environment Constraints:
 **Firewall and Network:** Ensure that the system running the Postural Analysis System has network access to download required dependencies and access any external APIs or databases if needed.
