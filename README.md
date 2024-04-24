@@ -13,10 +13,23 @@ Poor posture can lead to various health issues such as back pain, fatigue, and m
    (Note: There are no additional dependencies that need to be installed apart from our code.)
 
 ## Deployment Environment Constraints:
-* **Firewall and Network:** Ensure that the system running the Postural Analysis System has network access to download required dependencies and access any external APIs or databases if needed.
-* **Resource Availability:** The system may require a computer with sufficient processing power, especially if real-time video analysis is involved.
-* **Browser Compatibility:** If the project includes a web interface or visualization component, ensure compatibility with common browsers used in your school's environment.
-* **Security Policies:** Verify that the deployment environment allows the execution of the necessary scripts and does not block connections to external resources required by the project.
+* **Physical Location:** The system is designed for deployment on a TV in a well-trafficked hallway. If deployed in a dissimilar environment, particularly without people within view, the program will not run accordingly.
+* **Sensing Capabilities:** The system relies on specific sensing capabilities such as Kinect skeleton tracking and group detection. Verify that these capabilities are functional in the deployment environment and adjust sensor placement if necessary to optimize data collection.
+* **Ambient Conditions:** Consider ambient lighting conditions and potential noise levels in the hallway. Ensure that the system can operate effectively under varying lighting conditions and noise levels to maintain accurate posture analysis.
+* **Network Connectivity:** Although not explicitly mentioned in the physical environment, ensure that the system has reliable network connectivity to access any external resources or APIs required for data processing or analysis.
+* **Physical Security:** Given the public location, consider physical security measures to protect the hardware components (TV screen, Kinect sensor, computer) from tampering or damage. If the HDMI cable to turn on the TV is disconnected, the program will not run.
 
 ## Collaboration Record
+**Student Name and NetID: Jason Apostol JGA32**
+Contribution: Depth display, CSS, posture heuristic - using data from Kinect sensor, completed posture analysis to determine if the posture is good or poor, met for testing on the TV
+
+**Student Name and NetID: Mahal Montes emm254**
+Contribution: CSS and aesthetic HTML changes for stretching activity, starting screen, and postural analysis, additional gifs + sources, wrote up readme after group discussion, met for testing on the TV
+
+**Student Name and NetID: Shriya Anand sa2435**
+Contribution: Overlaying canvas on image for rectangle display, creating the rectangle over the users and color coding them based off their posture, edits on writeup, created information pamphlet on posture and made it available on site via QR code, met for testing on the TV
+
+**Student Name and NetID: Jason Zheng jz775**
+Contribution: Initial WebSocket connection code, twod socket code, dynamic html code/state code, utilized data regarding joints from Kinect sensor to interpret user action as commands, met for testing on the TV
+
 
